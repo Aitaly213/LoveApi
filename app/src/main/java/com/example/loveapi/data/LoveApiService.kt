@@ -1,4 +1,4 @@
-package com.example.loveapi
+package com.example.loveapi.data
 
 import retrofit2.Call
 import retrofit2.http.GET
