@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.ResultFragment"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_love"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_firstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_gravity="center"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_lovee"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_secondName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_margin="20dp"
+        android:text="Your Score"
+        android:layout_gravity="center"
+        android:textColor="@android:color/darker_gray"
+        />
+
+    <TextView
+        android:id="@+id/tv_lovePercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/tv_loveResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        />
+
+
+
+    <Button
+        android:id="@+id/btn_tryAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Try Again"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"/>
+
+
+
+</LinearLayout>

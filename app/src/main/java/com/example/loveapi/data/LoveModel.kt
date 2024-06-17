@@ -1,4 +1,4 @@
-package com.example.loveapi
+package com.example.loveapi.data
 
 import com.google.gson.annotations.SerializedName
 
