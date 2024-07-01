@@ -47,6 +47,4 @@ class ResultFragment : Fragment() {
         binding.tvLovePercentage.text = "${args.lovePercentage}%"
         binding.tvLoveResult.text = args.loveResult.toString()
     }
-
-
 }
