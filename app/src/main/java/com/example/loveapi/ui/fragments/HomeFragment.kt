@@ -1,24 +1,27 @@
 package com.example.loveapi.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.loveapi.App
-import com.example.loveapi.data.LoveModel
 import com.example.loveapi.databinding.FragmentHomeBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.loveapi.ui.LoveCalculatorViewModel
 
 class HomeFragment : Fragment() {
 
     private val binding by lazy {
         FragmentHomeBinding.inflate(layoutInflater)
+    }
+
+    private val api = App().api
+
+    private val viewModel: LoveCalculatorViewModel by lazy {
+        LoveCalculatorViewModel(api)
     }
 
 
@@ -34,30 +37,34 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnCalculate.setOnClickListener {
-            App().api.getPercentage(
+            val firstName = binding.etFirstName.text.toString()
+            val secondName = binding.etSecondName.text.toString()
+            viewModel.calculateLovePercentage(
                 key = "13db8c0c9fmsh0e8b65404615b3ap1035a5jsn85bfe5faab5c",
                 host = "love-calculator.p.rapidapi.com",
-                firstName = binding.etFirstName.text.toString(),
-                secondName = binding.etSecondName.text.toString()
-            ).enqueue(object : Callback<LoveModel> {
-                override fun onResponse(call: Call<LoveModel>, response: Response<LoveModel>) {
-                    if (response.code() in 200..300 && response.body() != null) {
-
-                        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToResultFragment(
-                            loverFirstName = response.body()!!.firstName,
-                            loverSecondName = response.body()!!.secondName,
-                            lovePercentage = response.body()!!.percentage,
-                            loveResult = response.body()!!.result
-                        ))
-                    }
-                }
-
-                override fun onFailure(call: Call<LoveModel>, t: Throwable) {
-                    Toast.makeText(requireContext(),t.message.toString(),Toast.LENGTH_SHORT).show()
-                }
-            }
+                firstName = firstName,
+                secondName = secondName
             )
         }
+
+        viewModel.loveModel.observe(viewLifecycleOwner, Observer { loveModel ->
+            loveModel?.let {
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToResultFragment(
+                        loverFirstName = it.firstName,
+                        loverSecondName = it.secondName,
+                        lovePercentage = it.percentage,
+                        loveResult = it.result
+                    )
+                )
+            }
+        })
+
+        viewModel.error.observe(viewLifecycleOwner, Observer { errorMessage ->
+            errorMessage?.let {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
 }
