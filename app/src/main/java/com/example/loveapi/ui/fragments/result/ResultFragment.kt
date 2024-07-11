@@ -1,4 +1,4 @@
-package com.example.loveapi.ui.fragments
+package com.example.loveapi.ui.fragments.result
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

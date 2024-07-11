@@ -1,7 +1,6 @@
-package com.example.loveapi.ui.fragments
+package com.example.loveapi.ui.fragments.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.loveapi.App
 import com.example.loveapi.data.LoveModel
 import com.example.loveapi.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private val binding by lazy {

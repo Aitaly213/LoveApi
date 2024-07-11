@@ -2,9 +2,11 @@ package com.example.loveapi
 
 import android.app.Application
 import com.example.loveapi.data.LoveApiService
+import dagger.hilt.android.HiltAndroidApp
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+@HiltAndroidApp
 class App  : Application(){
 
         var api: LoveApiService = Retrofit.Builder()
